@@ -4,17 +4,39 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AngularFireModule } from 'angularfire2';
+import { RouterModule, Routes } from "@angular/router";
+import { AF } from "./providers/af";
+import { LoginPageComponent } from './login-page/login-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
+
+export const firebaseConfig = {
+  apiKey: 'AIzaSyACkFx2H5xDfhYa_rKkthi0_WFO-yC9Nkc',
+  authDomain: 'fir-crud-f2a87.firebaseapp.com',
+  databaseURL: 'https://fir-crud-f2a87.firebaseio.com',
+  storageBucket: 'fir-crud-f2a87.appspot.com',
+  messagingSenderId: '278835166973'
+};
+
+const routes: Routes = [
+  { path: '', component: HomePageComponent},
+  { path: 'login', component: LoginPageComponent}
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     FormsModule,
+    RouterModule.forRoot(routes),
     HttpModule
   ],
-  providers: [],
+  providers: [AF],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
