@@ -5,10 +5,11 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
-import { RouterModule, Routes } from "@angular/router";
+import { Routes, RouterModule } from "@angular/router";
 import { AF } from "./providers/af";
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component'; 
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyACkFx2H5xDfhYa_rKkthi0_WFO-yC9Nkc',
@@ -20,14 +21,16 @@ export const firebaseConfig = {
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
-  { path: 'login', component: LoginPageComponent}
+  { path: 'login', component: LoginPageComponent},
+  { path: 'register', component: RegistrationPageComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    RegistrationPageComponent
   ],
   imports: [
     BrowserModule,

@@ -24,10 +24,21 @@ export class AppComponent {
         }
         else{
           console.log("Successfully Logged in.");
-          // Set the Display Name and Email so we can attribute messages to them
+          if(auth.google){
+            // Set the Display Name and Email so we can attribute messages to them
           this.afService.displayName = auth.google.displayName;
           this.afService.email = auth.google.email;
-
+          }
+          else if(auth.facebook){
+            // Set the Display Name and Email so we can attribute messages to them
+          this.afService.displayName = auth.facebook.displayName;
+          this.afService.email = auth.facebook.email;
+        }
+        else
+        {
+          this.afService.displayName = auth.auth.email;
+          this.afService.email = auth.auth.email;
+        }
           this.isLoggedIn = true;
         }        
       }
